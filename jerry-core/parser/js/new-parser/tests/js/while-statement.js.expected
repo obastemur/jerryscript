@@ -1,0 +1,97 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  0] CBC_JUMP_FORWARD
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  0] CBC_BRANCH_IF_TRUE_BACKWARD
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  0] CBC_JUMP_FORWARD
+  [  0] CBC_JUMP_FORWARD
+  [  1] CBC_PUSH_LITERAL idx:3->string(text)
+  [  1] CBC_CALL_IDENT_PUSH_RESULT idx:2->ident(print) byte_arg:1
+  [  0] CBC_POP_BLOCK
+  [  0] CBC_JUMP_BACKWARD
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_PUSH_IDENT idx:4->ident(b)
+  [  0] CBC_BRANCH_IF_FALSE_BACKWARD
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  0] CBC_JUMP_FORWARD
+  [  0] CBC_JUMP_FORWARD
+  [  0] CBC_JUMP_FORWARD
+  [  1] CBC_PUSH_IDENT idx:5->ident(x)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:4->ident(b)
+  [  0] CBC_BRANCH_IF_FALSE_FORWARD
+  [  1] CBC_PUSH_TRUE
+  [  1] CBC_JUMP_FORWARD
+  [  1] CBC_PUSH_TRUE
+  [  0] CBC_BRANCH_IF_TRUE_BACKWARD
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  0] CBC_BRANCH_IF_TRUE_BACKWARD
+  [  1] CBC_PUSH_FALSE
+  [  0] CBC_BRANCH_IF_TRUE_BACKWARD
+  [  1] CBC_PUSH_IDENT idx:6->ident(y)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 6
+  Const literal range end: 7
+  Literal range end: 7
+
+   0 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+   2 : CBC_POP_BLOCK
+   3 : CBC_PUSH_IDENT idx:1(ident)->ident(a)
+   5 : CBC_BRANCH_IF_TRUE_BACKWARD offset:2(->3)
+   7 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+   9 : CBC_POP_BLOCK
+  10 : CBC_JUMP_FORWARD offset:12(->22)
+  12 : CBC_JUMP_FORWARD offset:8(->20)
+  14 : CBC_PUSH_LITERAL idx:6(lit)->string(text)
+  16 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:1 idx:2(ident)->ident(print)
+  19 : CBC_POP_BLOCK
+  20 : CBC_JUMP_BACKWARD offset:6(->14)
+  22 : CBC_PUSH_IDENT idx:1(ident)->ident(a)
+  24 : CBC_BRANCH_IF_LOGICAL_FALSE offset:4(->28)
+  26 : CBC_PUSH_IDENT idx:3(ident)->ident(b)
+  28 : CBC_BRANCH_IF_FALSE_BACKWARD offset:16(->12)
+  30 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+  32 : CBC_POP_BLOCK
+  33 : CBC_JUMP_FORWARD offset:23(->56)
+  35 : CBC_JUMP_FORWARD offset:17(->52)
+  37 : CBC_JUMP_FORWARD offset:5(->42)
+  39 : CBC_PUSH_IDENT idx:4(ident)->ident(x)
+  41 : CBC_POP_BLOCK
+  42 : CBC_PUSH_IDENT idx:3(ident)->ident(b)
+  44 : CBC_BRANCH_IF_FALSE_FORWARD offset:5(->49)
+  46 : CBC_PUSH_TRUE
+  47 : CBC_JUMP_FORWARD offset:3(->50)
+  49 : CBC_PUSH_TRUE
+  50 : CBC_BRANCH_IF_TRUE_BACKWARD offset:11(->39)
+  52 : CBC_PUSH_IDENT idx:1(ident)->ident(a)
+  54 : CBC_BRANCH_IF_TRUE_BACKWARD offset:17(->37)
+  56 : CBC_PUSH_FALSE
+  57 : CBC_BRANCH_IF_TRUE_BACKWARD offset:22(->35)
+  59 : CBC_PUSH_IDENT idx:5(ident)->ident(y)
+  61 : CBC_POP_BLOCK
+  62 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+  64 : CBC_POP_BLOCK
+  65 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 66 bytes
+
+Script parsing successfully completed. Total byte code size: 66 bytes
+
+--- Script parsing end ---
+

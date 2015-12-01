@@ -1,0 +1,26 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(a)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 1
+  Const literal range end: 1
+  Literal range end: 1
+
+   0 : CBC_PUSH_IDENT idx:0(ident)->ident(a)
+   2 : CBC_POP_BLOCK
+   3 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 4 bytes
+
+Script parsing successfully completed. Total byte code size: 4 bytes
+
+--- Script parsing end ---
+

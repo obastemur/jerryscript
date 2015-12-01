@@ -1,0 +1,151 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:3->string(string)
+  [  1] CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:1
+  [  0] CBC_EXT_ASSIGN_IDENT_BLOCK idx:1->ident(a)
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  2] CBC_PUSH_TWO_LITERALS idx:4->ident(arg1) idx:5->ident(arg2)
+  [  1] CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:2
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  0] CBC_JUMP_FORWARD
+  [  1] CBC_PUSH_IDENT idx:6->ident(nothing)
+  [  0] CBC_POP_BLOCK
+  [  2] CBC_PUSH_TWO_LITERALS idx:4->ident(arg1) idx:5->ident(arg2)
+  [  0] CBC_EXT_CALL_EVAL byte_arg:2
+  [  0] CBC_JUMP_BACKWARD
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+--- Function parsing start ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP
+  [  1] CBC_PUSH_LITERAL idx:3->string(string)
+  [  1] CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:1
+  [  0] CBC_ASSIGN_IDENT idx:1->ident(a)
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP
+  [  2] CBC_PUSH_TWO_LITERALS idx:4->ident(arg1) idx:5->ident(arg2)
+  [  0] CBC_EXT_CALL_EVAL byte_arg:2
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP
+
+Final byte code dump:
+
+  Maximum stack depth: 2
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 5
+  Const literal range end: 6
+  Literal range end: 6
+
+   0 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+   2 : CBC_POP
+   3 : CBC_PUSH_LITERAL idx:5(lit)->string(string)
+   5 : CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:1
+   8 : CBC_ASSIGN_IDENT idx:1(ident)->ident(a)
+  10 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+  12 : CBC_POP
+  13 : CBC_PUSH_TWO_LITERALS idx:3(ident)->ident(arg1) idx:4(ident)->ident(arg2)
+  16 : CBC_EXT_CALL_EVAL byte_arg:2
+  19 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+  21 : CBC_POP
+  22 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 23 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_ADD_TWO_LITERALS idx:2->ident(eval) idx:1->ident(a)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:2->ident(eval)
+  [  1] CBC_ADD_RIGHT_LITERAL idx:2->ident(eval)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:0
+  [  1] CBC_ADD_RIGHT_LITERAL idx:1->ident(a)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:0
+  [  1] CBC_ADD_RIGHT_LITERAL idx:2->ident(eval)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  2] CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:0
+  [  1] CBC_ADD
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:2->ident(eval)
+  [  2] CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:0
+  [  1] CBC_ADD
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 2
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 7
+  Const literal range end: 8
+  Literal range end: 9
+
+   0 : CBC_INITIALIZE_VAR idx:0(ident)->var_ident(f) idx:8(lit)->function
+   3 : CBC_PUSH_IDENT idx:1(ident)->ident(next_statement)
+   5 : CBC_POP_BLOCK
+   6 : CBC_PUSH_LITERAL idx:7(lit)->string(string)
+   8 : CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:1
+  11 : CBC_EXT_ASSIGN_IDENT_BLOCK idx:2(ident)->ident(a)
+  14 : CBC_PUSH_IDENT idx:1(ident)->ident(next_statement)
+  16 : CBC_POP_BLOCK
+  17 : CBC_PUSH_TWO_LITERALS idx:4(ident)->ident(arg1) idx:5(ident)->ident(arg2)
+  20 : CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:2
+  23 : CBC_POP_BLOCK
+  24 : CBC_PUSH_IDENT idx:1(ident)->ident(next_statement)
+  26 : CBC_POP_BLOCK
+  27 : CBC_JUMP_FORWARD offset:11(->38)
+  29 : CBC_PUSH_IDENT idx:6(ident)->ident(nothing)
+  31 : CBC_POP_BLOCK
+  32 : CBC_PUSH_TWO_LITERALS idx:4(ident)->ident(arg1) idx:5(ident)->ident(arg2)
+  35 : CBC_EXT_CALL_EVAL byte_arg:2
+  38 : CBC_JUMP_BACKWARD offset:9(->29)
+  40 : CBC_PUSH_IDENT idx:1(ident)->ident(next_statement)
+  42 : CBC_POP_BLOCK
+  43 : CBC_PUSH_IDENT idx:1(ident)->ident(next_statement)
+  45 : CBC_POP_BLOCK
+  46 : CBC_ADD_TWO_LITERALS idx:3(ident)->ident(eval) idx:2(ident)->ident(a)
+  49 : CBC_POP_BLOCK
+  50 : CBC_PUSH_IDENT idx:3(ident)->ident(eval)
+  52 : CBC_ADD_RIGHT_LITERAL idx:3(ident)->ident(eval)
+  54 : CBC_POP_BLOCK
+  55 : CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:0
+  58 : CBC_ADD_RIGHT_LITERAL idx:2(ident)->ident(a)
+  60 : CBC_POP_BLOCK
+  61 : CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:0
+  64 : CBC_ADD_RIGHT_LITERAL idx:3(ident)->ident(eval)
+  66 : CBC_POP_BLOCK
+  67 : CBC_PUSH_IDENT idx:2(ident)->ident(a)
+  69 : CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:0
+  72 : CBC_ADD
+  73 : CBC_POP_BLOCK
+  74 : CBC_PUSH_IDENT idx:3(ident)->ident(eval)
+  76 : CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:0
+  79 : CBC_ADD
+  80 : CBC_POP_BLOCK
+  81 : CBC_PUSH_IDENT idx:1(ident)->ident(next_statement)
+  83 : CBC_POP_BLOCK
+  84 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 85 bytes
+
+Script parsing successfully completed. Total byte code size: 108 bytes
+
+--- Script parsing end ---
+

@@ -1,0 +1,18 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->number(.00e000)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  1] CBC_PROP_STRING_GET idx:2->string(e)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:3->number(12e-001)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:4->number(7.e5)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:5->number(0.e+09)
+  [  0] CBC_POP_BLOCK
+
+--- Script parsing end ---
+
+Parse error 'Missing exponent part.' at line: 5 col: 1

@@ -1,0 +1,434 @@
+This document describes the core design principles of the compact byte
+code (CBC) representation. The key focus is reducing memory consumption of
+the byte code representation without sacrificing considerable performance.
+Other similar designs focus on performance so inventing this representation
+is an original research.
+
+CBC is a CISC like instruction set which assign shorter instructions for
+frequent operations. Many instructions represent multiple atomic tasks
+which reduces the byte code size. This technique is a special data
+compression.
+
+---------------------------------------------
+ Compiled code format
+---------------------------------------------
+
+The memory layout of the compiled byte code is the following:
+
+  [ header ][ literals ][ CBC instruction list ]
+
+The header is a cbc_compiled_code structure with several fields. These
+fields contains the key properties of the compiled code.
+
+The literals part is an array of ecma values. These values can contain any
+EcmaScript value types, e.g. strings, numbers, function and regexp templates.
+The number of literals is stored in the literal_end field of the header.
+
+CBC instruction list is a sequence of byte code instructions which represents
+the compiled code.
+
+---------------------------------------------
+ Byte code format
+---------------------------------------------
+
+The memory layout of a byte code is the following:
+
+  [ opcode ][ arguments (maximum two) ]
+
+Each byte code starts with an opcode. The opcode is one byte long for
+frequent and two byte long for rare instructions. The first byte of the
+rare instructions is always zero (CBC_EXT_OPCODE), and the second byte
+represents the extended opcode. The name of common and rare instructions
+start with CBC_ and CBC_EXT_ prefix respectively.
+
+The maximum number of opcodes is 511, since 255 common (zero value exluded)
+and 256 rare instructions can be defined. Currently around 230 frequent and
+120 rare instructions are available.
+
+There are three types of arguments in CBC:
+
+ - byte argument: a value between 0 and 255, which often represents the
+   argument count of call like opcodes (function call, new, eval, etc.)
+
+ - literal argument: an integer index which is greater or equal than zero
+   and less than the literal_end field of the header.
+
+ - relative branch: an 1-3 byte long offset. The number of bytes is part of
+   the opcode, so each byte code with a branch argument has three forms. The
+   direction is also defined by the opcode since the offset is an unsigned
+   value. Certain branch instructions such as unconditional branch has 6 forms:
+
+   CBC_JUMP_FORWARD, CBC_JUMP_FORWARD_2, CBC_JUMP_FORWARD_3
+   CBC_JUMP_BACKWARD, CBC_JUMP_BACKWARD_2, CBC_JUMP_BACKWARD_3
+
+   The first form has 1, the second has 2 and the third has 3 byte offset.
+
+   The branch argument might also represent the end of an instruction range.
+   For example the branch argument of CBC_EXT_WITH_CREATE_CONTEXT shows the
+   end of a with statement. More precisely the position after the last
+   instruction. These byte codes are explained in the contexts section in
+   detail.
+
+Argument combinations are limited to the following six forms:
+
+  - no arguments
+  - a literal argument
+  - a byte argument
+  - a branch argument
+  - a byte and a literal arguments
+  - two literal arguments
+
+
+---------------------------------------------
+ Literals
+---------------------------------------------
+
+There are two types of literal encoding in CBC. Both are variable length,
+where the length is one or two byte long.
+
+  - small: maximum 511 literals can be encoded.
+
+    One byte encoding for literals 0 - 254.
+      byte[0] = literal_index
+
+    Two byte encoding for literals 255 - 510.
+      byte[0] = 0xff
+      byte[1] = literal_index - 0xff
+
+  - full: maximum 32767 literal can be encoded.
+
+    One byte encoding for literals 0 - 127.
+      byte[0] = literal_index
+
+    Two byte encoding for literals 128 - 32767.
+      byte[0] = (literal_index >> 8) | 0x80
+      byte[1] = (literal_index & 0xff)
+
+Since most functions require less than 255 literal, small encoding
+provides a single byte literal index for all literals. Small encoding
+consumes less space than full encoding, but it has a limited range.
+
+Efficient decoding algorithm:
+
+  During init:
+
+    if (compiled_code_header_p->literal_encoding == cbc_literal_encoding_small)
+    {
+      limit = 0xff;
+      delta = 0xfe01;
+    }
+    else
+    {
+      limit = 0x80;
+      delta = 0x8000;
+    }
+
+  Decoding:
+
+    uint32_t index = cbc_p[0]; /* Current byte code offset. */
+    if (index >= limit)
+    {
+      index = ((index << 8) | cbc_p[1]) - delta;
+    }
+
+In the following text each range represents those indicies which are
+greater than or equal to the left side and less than the right side
+of the range. For example a range between ident_end and literal_end
+contains those indicies, which are greater than or equal to ident_end
+and less than literal_end. If ident_end equals to literal_end the range
+is empty.
+
+Literals are organized into groups whose represent various literal types.
+Having these groups consuming less space than assigning flag bits to
+each literal.
+
+The two major group of literals are identifiers and values.
+
+  - identifier: a named reference to a variable. Literals between zero
+    and ident_end of the header belongs to here. All of these literals
+    must be a string or undefined. Undefined can only be used for those
+    literals which cannot be accessed by a literal name. For example
+    function (arg,arg) has two arguments, but the arg identifier only
+    refers to the second argument. In such cases the name of the first
+    argument is undefined. Furthermore optimizations such as CSE may also
+    introduce literals without name.
+
+  - value: a reference to an immediate value. Literals between ident_end
+    and const_literal_end are constant values such as numbers or strings.
+    These literals cannot be changed by a EcmaScript program. Literals
+    between const_literal_end and literal_end are template literals. A new
+    object needs to be constructed each time when their value is assigned.
+    These literals are functions and regular expressions.
+
+The following example shows the difference between these two groups. The
+CBC format of the "a" + a expression statement is the following:
+
+  Maximum stack depth: 1
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 1
+  Const literal range end: 2
+  Literal range end: 2
+
+   0 : CBC_ADD_TWO_LITERALS idx:1(lit)->string(a) idx:0(ident)->ident(a)
+   3 : CBC_POP_BLOCK
+
+Although both literals refers to the 'a' string, their role is different.
+The first 'a' is an immediate value while the second one is a reference.
+We can also notice that the parser assigns a lower index to ident(a)
+than string(a), and both indices are inside their corresponding group:
+
+  0 <= ident(a) has index 0 < Identifier range end: 1
+  Identifier range end: 1 <= string(a) has index 1 < Literal range end: 2
+
+The byte code dump also shows the group for each literal index enclosed
+in parentheses.
+
+The reason of using lower indicies for identifiers is reducing memory
+consumption. We presume that most identifier names are used multiple
+times in the same source code and lower indicies requires less space
+for encoding regardless of the encoding format.
+
+There are two other sub-groups of identifiers. Registers are those
+identifiers which are stored in the function call stack. Arguments
+are those registers which are passed by a caller function. Section
+"Registers and stack" describe the details of these groups.
+
+TODO: identifiers are searched with a linear algorithm. Adding a hash table
+would increase the memory consumption, but would improve performance as well.
+
+
+---------------------------------------------
+ Result of program or eval blocks
+---------------------------------------------
+
+The return statement cannot be used in program or eval blocks, only in
+EcmaScript functions. However, a program or eval block still returns
+with a value: the result of the last successfully executed expression
+statement. In CBC we assume that any expression statement can be the
+last one. Control flow analysis could be used to reduce the number of
+possible last statements, but such analysis is time and memory consuming.
+The parser might perform such optimization in the future though.
+
+Instructions end with _BLOCK saves their input value because that value
+can be the last result. The following example shows this:
+
+  a + b.x
+  c = d(y)
+
+Resulting byte code:
+
+   0 : CBC_PUSH_IDENT idx:1(ident)->ident(b)
+   2 : CBC_PROP_STRING_GET idx:5(lit)->string(x)
+   4 : CBC_ADD_LEFT_LITERAL idx:0(ident)->ident(a)
+   6 : CBC_POP_BLOCK
+   7 : CBC_PUSH_IDENT idx:4(ident)->ident(y)
+   9 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:1 idx:3(ident)->ident(d)
+  12 : CBC_EXT_ASSIGN_IDENT_BLOCK idx:2(ident)->ident(c)
+  15 : CBC_RETURN_WITH_UNDEFINED
+
+Resulting byte code if the snippet is inside a function:
+
+   0 : CBC_PUSH_IDENT idx:1(ident)->ident(b)
+   2 : CBC_PROP_STRING_GET idx:5(lit)->string(x)
+   4 : CBC_ADD_LEFT_LITERAL idx:0(ident)->ident(a)
+   6 : CBC_POP
+   7 : CBC_PUSH_IDENT idx:4(ident)->ident(y)
+   9 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:1 idx:3(ident)->ident(d)
+  12 : CBC_ASSIGN_IDENT idx:2(ident)->ident(c)
+  14 : CBC_RETURN_WITH_UNDEFINED
+
+The latter is one byte shorter because the opcode of CBC_ASSIGN_IDENT
+is one byte shorter than CBC_EXT_ASSIGN_IDENT_BLOCK.
+
+
+---------------------------------------------
+ Registers and stack
+---------------------------------------------
+
+CBC execution engine is a hybrid of register and stack machines. Temporary
+variables are stored on a stack while other values such as local variables
+created by var statements can be stored in registers. Instructions with
+temporary arguments always use the topmost value(s) of the stack. Since
+the relative offset of these arguments are fixed, no space is required
+to encode them which reduces the byte code size. Register indicies are
+encoded as literal indicies.
+
+The function call stack is a list of EcmaScript values. Each function
+consumes a certain amount of these values. All of these values are strong
+roots for the garbage collector. The layout is the following:
+
+ ( previous functions ... ) [ arguments ][ registers ][ private ][ stack ]
+
+Each function expects a fixed number of arguments stored in the
+argument_end field of the header. If less arguments are provided by the
+caller, further arguments are filled with undefined values. If more
+arguments are provided, the excess arguments are moved to the arguments
+EcmaScript object or freed if arguments object is not needed. Registers
+are always initialized to undefined. Literal indicies between zero and
+register_end represent registers. Because function arguments are part of
+the register list argument_end is only needed for initializing the stack
+layout.
+
+Functions might need to store some private values on the stack (e.g.
+pointer to the previous frame). These values can be stored between
+[registers] and [stack] groups.
+
+The stack area provides space for the temporary ecmascript values. This
+area does not need any initialization since stack write (push) always
+precede stack read (peek/pop) operations.
+
+The parser tries to store local variable references in registers for
+function bodies. References inside with statements or catch identifiers
+are not stored in registers even if they are declared with var.
+Functions with eval calls are also an exception.
+
+The following example shows the effect of eval call:
+
+  // Function without eval call. Both 'x'
+  // and 'eval' are stored in registers.
+  function f(x) {
+    var eval = 5;
+    return eval + x;
+  }
+
+   0 : CBC_ASSIGN_IDENT_LITERAL idx:1(reg)->var_ident(eval) idx:2(lit)->number(5)
+   3 : CBC_ADD_TWO_LITERALS idx:1(reg)->var_ident(eval) idx:0(arg)->var_ident(x)
+   6 : CBC_RETURN
+
+  // Function with eval call. A local 'x' variable is created and
+  // initialized from the first argument. The argument has no name
+  // which is represented by an 'undefined' in the byte code dump.
+  function f(x) {
+    return eval("x") + x;
+  }
+
+   0 : CBC_INITIALIZE_VAR idx:1(ident)->var_ident(x) idx:0(arg)->undefined
+   3 : CBC_PUSH_LITERAL idx:3(lit)->string(x)
+   5 : CBC_EXT_CALL_EVAL_PUSH_RESULT byte_arg:1
+   8 : CBC_ADD_RIGHT_LITERAL idx:1(ident)->var_ident(x)
+  10 : CBC_RETURN
+
+TODO: How can we determine whether arguments objects is needed at
+compile time?
+
+
+---------------------------------------------
+ Contexts
+---------------------------------------------
+
+Most statements leaves an empty stack after the statement is executed.
+This rule is very important for exception handling because the stack
+can be reset after an exception is thrown. There are statements with
+contexts however which stores their current status on the stack. These
+statements are for-in, try-catch, and with. The amount of stack needed
+by these statements is defined in compile time constants such as
+PARSER_WITH_CONTEXT_STACK_ALLOCATION. Furthermore a special cleanup is
+needed when the execution of these statements is aborted by break or
+continue statements or by exception handling.
+
+Break and continue statements and exceptions are always unconditional
+forward jumps in CBC so only the end position of a context needs to be
+known. The parser emits a special jump instruction when the jump target
+crosses the border of a statement with context as seen in the next example:
+
+  a: with (x)
+  {
+    b:
+    {
+      break a;
+      break b;
+      f();
+    }
+  }
+
+Resulting byte code:
+
+   0 : CBC_PUSH_IDENT idx:0(ident)->ident(x)
+   2 : CBC_EXT_WITH_CREATE_CONTEXT offset:12(->14)
+   5 : CBC_JUMP_FORWARD_EXIT_CONTEXT offset:9(->14)
+   7 : CBC_JUMP_FORWARD offset:6(->13)
+   9 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:0 idx:1(ident)->ident(f)
+  12 : CBC_POP_BLOCK
+  13 : CBC_CONTEXT_END
+  14 : CBC_RETURN_WITH_UNDEFINED
+
+The with statement creates a context which is terminated by a CBC_CONTEXT_END
+opcode. The end offset of the with statement is also provided as a branch
+argument of CBC_EXT_WITH_CREATE_CONTEXT. If this offset is reached by a branch
+instruction (branch target is greater than or equal to the context end), the
+context needs to be removed. If the parser detects that a jump reaches the
+end of a context it emits the CBC_JUMP_FORWARD_EXIT_CONTEXT instruction.
+Otherwise it emits the much faster CBC_JUMP_FORWARD.
+
+The execution engine needs to store the stack offset of the topmost context
+and all contexts need to save their type and end offset at the end of their
+context. This information is needed by the engine to remove the aborted
+contexts. The removal algortithm is a loop which finalizes the topmost
+contexts until their end is reached:
+
+  while (jump_target >= get_end_address(topmost_context_end_offset))
+  {
+    type = get_type(topmost_context_end_offset);
+    context_size = get_size(type);
+    free_allocated_resources(type, topmost_context_end_offset);
+    topmost_context -= context_size;
+  }
+
+The last value of a context can be encoded as an integer number, where 24 bit
+represents the end offset and another two bit represents the type.
+
+In case of for-in context, the offset of CBC_EXT_FOR_IN_CREATE_CONTEXT is
+not just shows the end, but it is also a conditional branch target if the
+input object has no properties. In the latter case the engine does not
+need to set up the context.
+
+Try-catch statement has three segments in CBC: try, catch, and finally. The
+first and last are mandatory. The first two segments point to the start of
+the next segment instead of the context end. The following example shows the
+structure of a try-catch:
+
+  try {
+    x;
+  } catch (e) {
+    x;
+  } finally {
+    x;
+  }
+
+Resulting byte code:
+
+   0 : CBC_EXT_TRY_CREATE_CONTEXT offset:6(->6)
+   3 : CBC_PUSH_IDENT idx:0(ident)->ident(x)
+   5 : CBC_POP_BLOCK
+   6 : CBC_EXT_CATCH offset:8(->14)
+   9 : CBC_ASSIGN_IDENT idx:1(ident)->ident(e)
+  11 : CBC_PUSH_IDENT idx:0(ident)->ident(x)
+  13 : CBC_POP_BLOCK
+  14 : CBC_EXT_FINALLY offset:7(->21)
+  17 : CBC_PUSH_IDENT idx:0(ident)->ident(x)
+  19 : CBC_POP_BLOCK
+  20 : CBC_CONTEXT_END
+  21 : CBC_RETURN_WITH_UNDEFINED
+
+If no finally block is provided, it is replaced by a CBC_CONTEXT_END. Only
+the CBC_EXT_TRY_CREATE_CONTEXT creates a try-catch context, and only the
+CBC_CONTEXT_END removes a try-catch context. Executing the finally block
+is mandatory in EcmaScript even if a jump needs to be suspended. The target
+of such jumps needs to be saved in the try-catch context so jumps
+can be continued after the finally is done.
+
+
+---------------------------------------------
+ Variable initialization
+---------------------------------------------
+
+Variables are initialized in blocks to reduce byte code size. The
+CBC_INITIALIZE_VAR has a literal index and it initializes all literals
+between register_end and this index. It is ensured by the parser
+that all literals in this range are valid identifers. This instruction
+assigns undefined value to all identifiers.
+
+TODO: Create a block initializer for "initialize with a value" case.
+

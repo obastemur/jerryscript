@@ -1,0 +1,241 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:1->ident(b)
+  [  1] CBC_PROP_STRING_GET idx:2->string(c)
+  [  3] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  4] CBC_EXT_FOR_IN_GET_NEXT
+  [  3] CBC_ASSIGN_IDENT idx:3->ident(a)
+  [  0] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:4->ident(bb)
+  [  3] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  4] CBC_PUSH_IDENT idx:3->ident(a)
+  [  5] CBC_EXT_FOR_IN_GET_NEXT
+  [  3] CBC_ASSIGN_PROP_STRING idx:5->string(i)
+  [  4] CBC_PUSH_IDENT idx:6->ident(cc)
+  [  6] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  8] CBC_PUSH_TWO_LITERALS idx:1->ident(b) idx:5->string(i)
+  [  9] CBC_EXT_FOR_IN_GET_NEXT
+  [  6] CBC_ASSIGN
+  [  7] CBC_POST_INCR_IDENT_PUSH_RESULT idx:7->ident(x)
+  [  6] CBC_POP_BLOCK
+  [  3] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+  [  0] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  2] CBC_PUSH_TWO_LITERALS idx:8->ident(c) idx:7->ident(x)
+  [  1] CBC_PROP_GET
+  [  3] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  4] CBC_PUSH_LITERAL idx:9->string(x)
+  [  5] CBC_EXT_PUSH_UNDEFINED_BASE
+  [  6] CBC_EXT_FOR_IN_GET_NEXT
+  [  3] CBC_ASSIGN
+  [  4] CBC_CALL_IDENT_PUSH_RESULT idx:10->ident(d) byte_arg:0
+  [  3] CBC_POP_BLOCK
+  [  4] CBC_PUSH_IDENT idx:4->ident(bb)
+  [  6] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  8] CBC_PUSH_TWO_LITERALS idx:10->ident(d) idx:11->ident(y)
+  [  9] CBC_EXT_FOR_IN_GET_NEXT
+  [  6] CBC_ASSIGN
+  [  3] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+  [  4] CBC_CALL_IDENT_PUSH_RESULT idx:10->ident(d) byte_arg:0
+  [  3] CBC_POP_BLOCK
+  [  0] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:12->string(b)
+  [  3] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  4] CBC_EXT_FOR_IN_GET_NEXT
+  [  3] CBC_ASSIGN_IDENT idx:3->ident(a)
+  [  4] CBC_PUSH_IDENT idx:10->ident(d)
+  [  6] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  7] CBC_EXT_FOR_IN_GET_NEXT
+  [  6] CBC_ASSIGN_IDENT idx:8->ident(c)
+  [  7] CBC_CALL_IDENT_PUSH_RESULT idx:7->ident(x) byte_arg:0
+  [  6] CBC_POP_BLOCK
+  [  6] CBC_JUMP_FORWARD
+  [  7] CBC_CALL_IDENT_PUSH_RESULT idx:7->ident(x) byte_arg:0
+  [  6] CBC_POP_BLOCK
+  [  6] CBC_JUMP_FORWARD_EXIT_CONTEXT
+  [  7] CBC_CALL_IDENT_PUSH_RESULT idx:7->ident(x) byte_arg:0
+  [  6] CBC_POP_BLOCK
+  [  6] CBC_JUMP_FORWARD_EXIT_CONTEXT
+  [  7] CBC_CALL_IDENT_PUSH_RESULT idx:7->ident(x) byte_arg:0
+  [  6] CBC_POP_BLOCK
+  [  3] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+  [  4] CBC_CALL_IDENT_PUSH_RESULT idx:7->ident(x) byte_arg:0
+  [  3] CBC_POP_BLOCK
+  [  3] CBC_JUMP_FORWARD
+  [  4] CBC_CALL_IDENT_PUSH_RESULT idx:7->ident(x) byte_arg:0
+  [  3] CBC_POP_BLOCK
+  [  3] CBC_JUMP_FORWARD_EXIT_CONTEXT
+  [  4] CBC_CALL_IDENT_PUSH_RESULT idx:7->ident(x) byte_arg:0
+  [  3] CBC_POP_BLOCK
+  [  0] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:13->string(z)
+  [  3] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  4] CBC_EXT_FOR_IN_GET_NEXT
+  [  3] CBC_ASSIGN_IDENT idx:14->var_ident(var_a)
+  [  4] CBC_PUSH_LITERAL idx:13->string(z)
+  [  6] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  6] CBC_JUMP_FORWARD
+  [  7] CBC_MULTIPLY_TWO_LITERALS idx:7->ident(x) idx:15->string(y)
+  [  6] CBC_POP
+  [  7] CBC_EXT_FOR_IN_GET_NEXT
+  [  6] CBC_ASSIGN_IDENT idx:3->var_ident(a)
+  [  7] CBC_POST_INCR_IDENT_PUSH_RESULT idx:7->ident(x)
+  [  6] CBC_POP_BLOCK
+  [  3] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+  [  0] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:13->string(z)
+  [  3] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  4] CBC_EXT_FOR_IN_GET_NEXT
+  [  3] CBC_ASSIGN_IDENT idx:14->var_ident(var_a)
+  [  4] CBC_PUSH_LITERAL idx:13->string(z)
+  [  6] CBC_EXT_FOR_IN_CREATE_CONTEXT
+  [  6] CBC_JUMP_FORWARD
+  [  7] CBC_MULTIPLY_TWO_LITERALS idx:7->ident(x) idx:15->string(y)
+  [  6] CBC_POP
+  [  7] CBC_EXT_FOR_IN_GET_NEXT
+  [  6] CBC_ASSIGN_IDENT idx:3->var_ident(a)
+  [  7] CBC_POST_INCR_IDENT_PUSH_RESULT idx:7->ident(x)
+  [  6] CBC_POP_BLOCK
+  [  3] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+  [  0] CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT
+
+Final byte code dump:
+
+  Maximum stack depth: 9
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 10
+  Const literal range end: 16
+  Literal range end: 16
+
+   0 : CBC_DEFINE_VARS idx:1(ident)->var_ident(var_a)
+   2 : CBC_PUSH_IDENT idx:2(ident)->ident(next_statement)
+   4 : CBC_POP_BLOCK
+   5 : CBC_PUSH_IDENT idx:3(ident)->ident(b)
+   7 : CBC_PROP_STRING_GET idx:10(lit)->string(c)
+   9 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:10(->19)
+  12 : CBC_EXT_FOR_IN_GET_NEXT
+  14 : CBC_ASSIGN_IDENT idx:0(ident)->var_ident(a)
+  16 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:4(->12)
+  19 : CBC_PUSH_IDENT idx:2(ident)->ident(next_statement)
+  21 : CBC_POP_BLOCK
+  22 : CBC_PUSH_IDENT idx:4(ident)->ident(bb)
+  24 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:29(->53)
+  27 : CBC_PUSH_IDENT idx:0(ident)->var_ident(a)
+  29 : CBC_EXT_FOR_IN_GET_NEXT
+  31 : CBC_ASSIGN_PROP_STRING idx:11(lit)->string(i)
+  33 : CBC_PUSH_IDENT idx:5(ident)->ident(cc)
+  35 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:15(->50)
+  38 : CBC_PUSH_TWO_LITERALS idx:3(ident)->ident(b) idx:11(lit)->string(i)
+  41 : CBC_EXT_FOR_IN_GET_NEXT
+  43 : CBC_ASSIGN
+  44 : CBC_POST_INCR_IDENT_PUSH_RESULT idx:6(ident)->ident(x)
+  46 : CBC_POP_BLOCK
+  47 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:9(->38)
+  50 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:23(->27)
+  53 : CBC_PUSH_IDENT idx:2(ident)->ident(next_statement)
+  55 : CBC_POP_BLOCK
+  56 : CBC_PUSH_TWO_LITERALS idx:7(ident)->ident(c) idx:6(ident)->ident(x)
+  59 : CBC_PROP_GET
+  60 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:35(->95)
+  63 : CBC_PUSH_LITERAL idx:12(lit)->string(x)
+  65 : CBC_EXT_PUSH_UNDEFINED_BASE
+  67 : CBC_EXT_FOR_IN_GET_NEXT
+  69 : CBC_ASSIGN
+  70 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:0 idx:8(ident)->ident(d)
+  73 : CBC_POP_BLOCK
+  74 : CBC_PUSH_IDENT idx:4(ident)->ident(bb)
+  76 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:12(->88)
+  79 : CBC_PUSH_TWO_LITERALS idx:8(ident)->ident(d) idx:9(ident)->ident(y)
+  82 : CBC_EXT_FOR_IN_GET_NEXT
+  84 : CBC_ASSIGN
+  85 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:6(->79)
+  88 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:0 idx:8(ident)->ident(d)
+  91 : CBC_POP_BLOCK
+  92 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:29(->63)
+  95 : CBC_PUSH_IDENT idx:2(ident)->ident(next_statement)
+  97 : CBC_POP_BLOCK
+  98 : CBC_PUSH_LITERAL idx:13(lit)->string(b)
+ 100 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:60(->160)
+ 103 : CBC_EXT_FOR_IN_GET_NEXT
+ 105 : CBC_ASSIGN_IDENT idx:0(ident)->var_ident(a)
+ 107 : CBC_PUSH_IDENT idx:8(ident)->ident(d)
+ 109 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:32(->141)
+ 112 : CBC_EXT_FOR_IN_GET_NEXT
+ 114 : CBC_ASSIGN_IDENT idx:7(ident)->ident(c)
+ 116 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:0 idx:6(ident)->ident(x)
+ 119 : CBC_POP_BLOCK
+ 120 : CBC_JUMP_FORWARD offset:18(->138)
+ 122 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:0 idx:6(ident)->ident(x)
+ 125 : CBC_POP_BLOCK
+ 126 : CBC_JUMP_FORWARD_EXIT_CONTEXT offset:15(->141)
+ 128 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:0 idx:6(ident)->ident(x)
+ 131 : CBC_POP_BLOCK
+ 132 : CBC_JUMP_FORWARD_EXIT_CONTEXT offset:28(->160)
+ 134 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:0 idx:6(ident)->ident(x)
+ 137 : CBC_POP_BLOCK
+ 138 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:26(->112)
+ 141 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:0 idx:6(ident)->ident(x)
+ 144 : CBC_POP_BLOCK
+ 145 : CBC_JUMP_FORWARD offset:12(->157)
+ 147 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:0 idx:6(ident)->ident(x)
+ 150 : CBC_POP_BLOCK
+ 151 : CBC_JUMP_FORWARD_EXIT_CONTEXT offset:9(->160)
+ 153 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:0 idx:6(ident)->ident(x)
+ 156 : CBC_POP_BLOCK
+ 157 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:54(->103)
+ 160 : CBC_PUSH_IDENT idx:2(ident)->ident(next_statement)
+ 162 : CBC_POP_BLOCK
+ 163 : CBC_PUSH_LITERAL idx:14(lit)->string(z)
+ 165 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:31(->196)
+ 168 : CBC_EXT_FOR_IN_GET_NEXT
+ 170 : CBC_ASSIGN_IDENT idx:1(ident)->var_ident(var_a)
+ 172 : CBC_PUSH_LITERAL idx:14(lit)->string(z)
+ 174 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:19(->193)
+ 177 : CBC_JUMP_FORWARD offset:6(->183)
+ 179 : CBC_MULTIPLY_TWO_LITERALS idx:6(ident)->ident(x) idx:15(lit)->string(y)
+ 182 : CBC_POP
+ 183 : CBC_EXT_FOR_IN_GET_NEXT
+ 185 : CBC_ASSIGN_IDENT idx:0(ident)->var_ident(a)
+ 187 : CBC_POST_INCR_IDENT_PUSH_RESULT idx:6(ident)->ident(x)
+ 189 : CBC_POP_BLOCK
+ 190 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:13(->177)
+ 193 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:25(->168)
+ 196 : CBC_PUSH_IDENT idx:2(ident)->ident(next_statement)
+ 198 : CBC_POP_BLOCK
+ 199 : CBC_PUSH_LITERAL idx:14(lit)->string(z)
+ 201 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:31(->232)
+ 204 : CBC_EXT_FOR_IN_GET_NEXT
+ 206 : CBC_ASSIGN_IDENT idx:1(ident)->var_ident(var_a)
+ 208 : CBC_PUSH_LITERAL idx:14(lit)->string(z)
+ 210 : CBC_EXT_FOR_IN_CREATE_CONTEXT offset:19(->229)
+ 213 : CBC_JUMP_FORWARD offset:6(->219)
+ 215 : CBC_MULTIPLY_TWO_LITERALS idx:6(ident)->ident(x) idx:15(lit)->string(y)
+ 218 : CBC_POP
+ 219 : CBC_EXT_FOR_IN_GET_NEXT
+ 221 : CBC_ASSIGN_IDENT idx:0(ident)->var_ident(a)
+ 223 : CBC_POST_INCR_IDENT_PUSH_RESULT idx:6(ident)->ident(x)
+ 225 : CBC_POP_BLOCK
+ 226 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:13(->213)
+ 229 : CBC_EXT_BRANCH_IF_FOR_IN_HAS_NEXT offset:25(->204)
+ 232 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 233 bytes
+
+Script parsing successfully completed. Total byte code size: 233 bytes
+
+--- Script parsing end ---
+

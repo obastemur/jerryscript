@@ -1,0 +1,26 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_ADD_TWO_LITERALS idx:0->string(use strict) idx:1->string( another time)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 0
+  Const literal range end: 2
+  Literal range end: 2
+
+   0 : CBC_ADD_TWO_LITERALS idx:0(lit)->string(use strict) idx:1(lit)->string( another time)
+   3 : CBC_POP_BLOCK
+   4 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 5 bytes
+
+Script parsing successfully completed. Total byte code size: 5 bytes
+
+--- Script parsing end ---
+

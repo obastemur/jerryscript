@@ -1,0 +1,216 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_BIT_XOR_TWO_LITERALS idx:1->ident(a) idx:2->ident(b)
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  1] CBC_BIT_AND_TWO_LITERALS idx:3->ident(c) idx:4->ident(d)
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  1] CBC_BIT_OR_TWO_LITERALS idx:5->ident(e) idx:6->ident(f)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_BIT_XOR_TWO_LITERALS idx:1->ident(a) idx:2->ident(b)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_BIT_AND_TWO_LITERALS idx:3->ident(c) idx:4->ident(d)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_BIT_OR_TWO_LITERALS idx:5->ident(e) idx:6->ident(f)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_BIT_OR_TWO_LITERALS idx:1->ident(a) idx:2->ident(b)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_BIT_OR_TWO_LITERALS idx:3->ident(c) idx:4->ident(d)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_BIT_OR_TWO_LITERALS idx:5->ident(e) idx:6->ident(f)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  1] CBC_PUSH_IDENT idx:2->ident(b)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_PUSH_IDENT idx:3->ident(c)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_PUSH_IDENT idx:2->ident(b)
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  1] CBC_PUSH_IDENT idx:3->ident(c)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_PUSH_IDENT idx:2->ident(b)
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  1] CBC_PUSH_IDENT idx:3->ident(c)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_PUSH_IDENT idx:4->ident(d)
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  1] CBC_PUSH_IDENT idx:5->ident(e)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_PUSH_IDENT idx:6->ident(f)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  1] CBC_PUSH_IDENT idx:2->ident(b)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_PUSH_IDENT idx:3->ident(c)
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  1] CBC_PUSH_IDENT idx:4->ident(d)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_PUSH_IDENT idx:5->ident(e)
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  1] CBC_PUSH_IDENT idx:6->ident(f)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:7->number(1)
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  1] CBC_PUSH_LITERAL idx:8->number(2)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_PUSH_LITERAL idx:9->number(3)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  1] CBC_PROP_STRING_GET idx:10->string(x)
+  [  1] CBC_PROP_STRING_GET idx:11->string(y)
+  [  0] CBC_BRANCH_IF_LOGICAL_FALSE
+  [  1] CBC_PUSH_IDENT idx:1->ident(a)
+  [  2] CBC_CREATE_ARRAY
+  [  1] CBC_ADD
+  [  2] CBC_POST_INCR_IDENT_PUSH_RESULT idx:3->ident(c)
+  [  1] CBC_SUBTRACT
+  [  0] CBC_BRANCH_IF_LOGICAL_TRUE
+  [  2] CBC_PUSH_TWO_LITERALS idx:12->number(5) idx:13->number(6)
+  [  1] CBC_CALL_IDENT_PUSH_RESULT idx:1->ident(a) byte_arg:2
+  [  1] CBC_MULTIPLY_RIGHT_LITERAL idx:14->string(c)
+  [  2] CBC_PUSH_LITERAL idx:15->number(5)
+  [  2] CBC_CALL_PROP_STRING_PUSH_RESULT idx:10->string(x) byte_arg:0
+  [  1] CBC_SUBTRACT
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 2
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 7
+  Const literal range end: 16
+  Literal range end: 16
+
+   0 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+   2 : CBC_POP_BLOCK
+   3 : CBC_BIT_XOR_TWO_LITERALS idx:1(ident)->ident(a) idx:2(ident)->ident(b)
+   6 : CBC_BRANCH_IF_LOGICAL_TRUE offset:10(->16)
+   8 : CBC_BIT_AND_TWO_LITERALS idx:3(ident)->ident(c) idx:4(ident)->ident(d)
+  11 : CBC_BRANCH_IF_LOGICAL_TRUE offset:5(->16)
+  13 : CBC_BIT_OR_TWO_LITERALS idx:5(ident)->ident(e) idx:6(ident)->ident(f)
+  16 : CBC_POP_BLOCK
+  17 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+  19 : CBC_POP_BLOCK
+  20 : CBC_BIT_XOR_TWO_LITERALS idx:1(ident)->ident(a) idx:2(ident)->ident(b)
+  23 : CBC_BRANCH_IF_LOGICAL_FALSE offset:10(->33)
+  25 : CBC_BIT_AND_TWO_LITERALS idx:3(ident)->ident(c) idx:4(ident)->ident(d)
+  28 : CBC_BRANCH_IF_LOGICAL_FALSE offset:5(->33)
+  30 : CBC_BIT_OR_TWO_LITERALS idx:5(ident)->ident(e) idx:6(ident)->ident(f)
+  33 : CBC_POP_BLOCK
+  34 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+  36 : CBC_POP_BLOCK
+  37 : CBC_BIT_OR_TWO_LITERALS idx:1(ident)->ident(a) idx:2(ident)->ident(b)
+  40 : CBC_BRANCH_IF_LOGICAL_FALSE offset:10(->50)
+  42 : CBC_BIT_OR_TWO_LITERALS idx:3(ident)->ident(c) idx:4(ident)->ident(d)
+  45 : CBC_BRANCH_IF_LOGICAL_FALSE offset:5(->50)
+  47 : CBC_BIT_OR_TWO_LITERALS idx:5(ident)->ident(e) idx:6(ident)->ident(f)
+  50 : CBC_POP_BLOCK
+  51 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+  53 : CBC_POP_BLOCK
+  54 : CBC_PUSH_IDENT idx:1(ident)->ident(a)
+  56 : CBC_BRANCH_IF_LOGICAL_TRUE offset:8(->64)
+  58 : CBC_PUSH_IDENT idx:2(ident)->ident(b)
+  60 : CBC_BRANCH_IF_LOGICAL_FALSE offset:4(->64)
+  62 : CBC_PUSH_IDENT idx:3(ident)->ident(c)
+  64 : CBC_POP_BLOCK
+  65 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+  67 : CBC_POP_BLOCK
+  68 : CBC_PUSH_IDENT idx:1(ident)->ident(a)
+  70 : CBC_BRANCH_IF_LOGICAL_FALSE offset:4(->74)
+  72 : CBC_PUSH_IDENT idx:2(ident)->ident(b)
+  74 : CBC_BRANCH_IF_LOGICAL_TRUE offset:4(->78)
+  76 : CBC_PUSH_IDENT idx:3(ident)->ident(c)
+  78 : CBC_POP_BLOCK
+  79 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+  81 : CBC_POP_BLOCK
+  82 : CBC_PUSH_IDENT idx:1(ident)->ident(a)
+  84 : CBC_BRANCH_IF_LOGICAL_FALSE offset:4(->88)
+  86 : CBC_PUSH_IDENT idx:2(ident)->ident(b)
+  88 : CBC_BRANCH_IF_LOGICAL_TRUE offset:16(->104)
+  90 : CBC_PUSH_IDENT idx:3(ident)->ident(c)
+  92 : CBC_BRANCH_IF_LOGICAL_FALSE offset:4(->96)
+  94 : CBC_PUSH_IDENT idx:4(ident)->ident(d)
+  96 : CBC_BRANCH_IF_LOGICAL_TRUE offset:8(->104)
+  98 : CBC_PUSH_IDENT idx:5(ident)->ident(e)
+ 100 : CBC_BRANCH_IF_LOGICAL_FALSE offset:4(->104)
+ 102 : CBC_PUSH_IDENT idx:6(ident)->ident(f)
+ 104 : CBC_POP_BLOCK
+ 105 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+ 107 : CBC_POP_BLOCK
+ 108 : CBC_PUSH_IDENT idx:1(ident)->ident(a)
+ 110 : CBC_BRANCH_IF_LOGICAL_TRUE offset:20(->130)
+ 112 : CBC_PUSH_IDENT idx:2(ident)->ident(b)
+ 114 : CBC_BRANCH_IF_LOGICAL_FALSE offset:4(->118)
+ 116 : CBC_PUSH_IDENT idx:3(ident)->ident(c)
+ 118 : CBC_BRANCH_IF_LOGICAL_TRUE offset:12(->130)
+ 120 : CBC_PUSH_IDENT idx:4(ident)->ident(d)
+ 122 : CBC_BRANCH_IF_LOGICAL_FALSE offset:4(->126)
+ 124 : CBC_PUSH_IDENT idx:5(ident)->ident(e)
+ 126 : CBC_BRANCH_IF_LOGICAL_TRUE offset:4(->130)
+ 128 : CBC_PUSH_IDENT idx:6(ident)->ident(f)
+ 130 : CBC_POP_BLOCK
+ 131 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+ 133 : CBC_POP_BLOCK
+ 134 : CBC_PUSH_LITERAL idx:7(lit)->number(1)
+ 136 : CBC_BRANCH_IF_LOGICAL_TRUE offset:4(->140)
+ 138 : CBC_PUSH_LITERAL idx:8(lit)->number(2)
+ 140 : CBC_BRANCH_IF_LOGICAL_FALSE offset:4(->144)
+ 142 : CBC_PUSH_LITERAL idx:9(lit)->number(3)
+ 144 : CBC_POP_BLOCK
+ 145 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+ 147 : CBC_POP_BLOCK
+ 148 : CBC_PUSH_IDENT idx:1(ident)->ident(a)
+ 150 : CBC_PROP_STRING_GET idx:10(lit)->string(x)
+ 152 : CBC_PROP_STRING_GET idx:11(lit)->string(y)
+ 154 : CBC_BRANCH_IF_LOGICAL_FALSE offset:9(->163)
+ 156 : CBC_PUSH_IDENT idx:1(ident)->ident(a)
+ 158 : CBC_CREATE_ARRAY
+ 159 : CBC_ADD
+ 160 : CBC_POST_INCR_IDENT_PUSH_RESULT idx:3(ident)->ident(c)
+ 162 : CBC_SUBTRACT
+ 163 : CBC_BRANCH_IF_LOGICAL_TRUE offset:16(->179)
+ 165 : CBC_PUSH_TWO_LITERALS idx:12(lit)->number(5) idx:13(lit)->number(6)
+ 168 : CBC_CALL_IDENT_PUSH_RESULT byte_arg:2 idx:1(ident)->ident(a)
+ 171 : CBC_MULTIPLY_RIGHT_LITERAL idx:14(lit)->string(c)
+ 173 : CBC_PUSH_LITERAL idx:15(lit)->number(5)
+ 175 : CBC_CALL_PROP_STRING_PUSH_RESULT byte_arg:0 idx:10(lit)->string(x)
+ 178 : CBC_SUBTRACT
+ 179 : CBC_POP_BLOCK
+ 180 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+ 182 : CBC_POP_BLOCK
+ 183 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 184 bytes
+
+Script parsing successfully completed. Total byte code size: 184 bytes
+
+--- Script parsing end ---
+

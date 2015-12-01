@@ -1,0 +1,96 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+--- Function parsing start ---
+
+  [  0] CBC_RETURN_WITH_UNDEFINED
+  [  0] CBC_RETURN_WITH_UNDEFINED
+  [  1] CBC_PUSH_IDENT idx:0->ident(without_exp)
+  [  0] CBC_POP
+  [  0] CBC_RETURN_WITH_UNDEFINED
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 1
+  Const literal range end: 1
+  Literal range end: 1
+
+   0 : CBC_RETURN_WITH_UNDEFINED
+   1 : CBC_RETURN_WITH_UNDEFINED
+   2 : CBC_PUSH_IDENT idx:0(ident)->ident(without_exp)
+   4 : CBC_POP
+   5 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 6 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+--- Function parsing start ---
+
+  [  1] CBC_ADD_TWO_LITERALS idx:0->ident(a) idx:1->ident(b)
+  [  0] CBC_RETURN
+  [  1] CBC_MULTIPLY_TWO_LITERALS idx:2->ident(exp1) idx:3->ident(exp2)
+  [  0] CBC_RETURN
+  [  1] CBC_PRE_INCR_IDENT_PUSH_RESULT idx:0->ident(a)
+  [  0] CBC_RETURN
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 4
+  Const literal range end: 4
+  Literal range end: 4
+
+   0 : CBC_ADD_TWO_LITERALS idx:0(ident)->ident(a) idx:1(ident)->ident(b)
+   3 : CBC_RETURN
+   4 : CBC_MULTIPLY_TWO_LITERALS idx:2(ident)->ident(exp1) idx:3(ident)->ident(exp2)
+   7 : CBC_RETURN
+   8 : CBC_PRE_INCR_IDENT_PUSH_RESULT idx:0(ident)->ident(a)
+  10 : CBC_RETURN
+
+Byte code size: 11 bytes
+
+--- Function parsing end ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 3
+  Const literal range end: 3
+  Literal range end: 5
+
+   0 : CBC_INITIALIZE_VAR idx:0(ident)->var_ident(return_undefined) idx:3(lit)->function
+   3 : CBC_INITIALIZE_VAR idx:1(ident)->var_ident(return_expression) idx:4(lit)->function
+   6 : CBC_PUSH_IDENT idx:2(ident)->ident(next_statement)
+   8 : CBC_POP_BLOCK
+   9 : CBC_PUSH_IDENT idx:2(ident)->ident(next_statement)
+  11 : CBC_POP_BLOCK
+  12 : CBC_PUSH_IDENT idx:2(ident)->ident(next_statement)
+  14 : CBC_POP_BLOCK
+  15 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 16 bytes
+
+Script parsing successfully completed. Total byte code size: 33 bytes
+
+--- Script parsing end ---
+

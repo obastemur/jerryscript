@@ -1,0 +1,9 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->number(23.5e+5)
+  [  0] CBC_POP_BLOCK
+
+--- Script parsing end ---
+
+Parse error 'Expected ';' token.' at line: 2 col: 17

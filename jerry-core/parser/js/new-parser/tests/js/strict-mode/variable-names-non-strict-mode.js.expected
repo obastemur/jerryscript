@@ -1,0 +1,66 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(eval)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:1->ident(arguments)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:2->ident(implements)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:3->ident(interface)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:4->ident(let)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:5->ident(package)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:6->ident(private)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:7->ident(protected)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:8->ident(public)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:9->ident(static)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_IDENT idx:10->ident(yield)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 11
+  Const literal range end: 11
+  Literal range end: 11
+
+   0 : CBC_PUSH_IDENT idx:0(ident)->ident(eval)
+   2 : CBC_POP_BLOCK
+   3 : CBC_PUSH_IDENT idx:1(ident)->ident(arguments)
+   5 : CBC_POP_BLOCK
+   6 : CBC_PUSH_IDENT idx:2(ident)->ident(implements)
+   8 : CBC_POP_BLOCK
+   9 : CBC_PUSH_IDENT idx:3(ident)->ident(interface)
+  11 : CBC_POP_BLOCK
+  12 : CBC_PUSH_IDENT idx:4(ident)->ident(let)
+  14 : CBC_POP_BLOCK
+  15 : CBC_PUSH_IDENT idx:5(ident)->ident(package)
+  17 : CBC_POP_BLOCK
+  18 : CBC_PUSH_IDENT idx:6(ident)->ident(private)
+  20 : CBC_POP_BLOCK
+  21 : CBC_PUSH_IDENT idx:7(ident)->ident(protected)
+  23 : CBC_POP_BLOCK
+  24 : CBC_PUSH_IDENT idx:8(ident)->ident(public)
+  26 : CBC_POP_BLOCK
+  27 : CBC_PUSH_IDENT idx:9(ident)->ident(static)
+  29 : CBC_POP_BLOCK
+  30 : CBC_PUSH_IDENT idx:10(ident)->ident(yield)
+  32 : CBC_POP_BLOCK
+  33 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 34 bytes
+
+Script parsing successfully completed. Total byte code size: 34 bytes
+
+--- Script parsing end ---
+

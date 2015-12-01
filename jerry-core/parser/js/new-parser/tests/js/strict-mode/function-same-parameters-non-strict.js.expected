@@ -1,0 +1,45 @@
+
+--- Script parsing start ---
+
+
+--- Function parsing start ---
+
+  Note: legacy (non-strict) argument definition
+
+
+Final byte code dump:
+
+  Maximum stack depth: 2
+  Literal encoding: small
+  Argument range end: 2
+  Register range end: 2
+  Identifier range end: 2
+  Const literal range end: 2
+  Literal range end: 2
+
+   0 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 1
+  Const literal range end: 1
+  Literal range end: 2
+
+   0 : CBC_INITIALIZE_VAR idx:0(ident)->var_ident(strict_mode) idx:1(lit)->function
+   3 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 4 bytes
+
+Script parsing successfully completed. Total byte code size: 5 bytes
+
+--- Script parsing end ---
+

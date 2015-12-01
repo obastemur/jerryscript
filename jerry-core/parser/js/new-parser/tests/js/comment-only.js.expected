@@ -1,0 +1,22 @@
+
+--- Script parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 0
+  Const literal range end: 0
+  Literal range end: 0
+
+   0 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 1 bytes
+
+Script parsing successfully completed. Total byte code size: 1 bytes
+
+--- Script parsing end ---
+

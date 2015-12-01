@@ -1,0 +1,11 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_CREATE_OBJECT
+
+--- Function parsing start ---
+
+
+--- Script parsing end ---
+
+Parse error 'Property setters must have one argument.' at line: 3 col: 21

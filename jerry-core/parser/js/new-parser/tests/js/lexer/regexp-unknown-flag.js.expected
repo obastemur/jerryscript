@@ -1,0 +1,9 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->regexp(/\/*/ig)
+  [  0] CBC_POP_BLOCK
+
+--- Script parsing end ---
+
+Parse error 'Unknown regexp flag.' at line: 3 col: 17

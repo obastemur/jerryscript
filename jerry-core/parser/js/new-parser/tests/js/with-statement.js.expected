@@ -1,0 +1,81 @@
+
+--- Script parsing start ---
+
+
+--- Function parsing start ---
+
+  Note: legacy (non-strict) argument definition
+
+  [  1] CBC_PUSH_IDENT idx:4->var_ident(val)
+  [  2] CBC_EXT_WITH_CREATE_CONTEXT
+  [  2] CBC_ASSIGN_IDENT_LITERAL idx:5->ident(v1) idx:3->var_ident(arg)
+  [  5] CBC_EXT_TRY_CREATE_CONTEXT
+  [  6] CBC_PUSH_IDENT idx:6->ident(ident)
+  [  7] CBC_EXT_WITH_CREATE_CONTEXT
+  [  8] CBC_PUSH_IDENT idx:3->var_ident(arg)
+  [  9] CBC_PUSH_IDENT idx:5->ident(v1)
+  [  9] CBC_PROP_STRING_GET idx:8->string(val)
+  [  7] CBC_ASSIGN_PROP_STRING idx:7->string(other)
+  [  5] CBC_CONTEXT_END
+  [  5] CBC_EXT_FINALLY
+  [  2] CBC_CONTEXT_END
+  [  3] CBC_PUSH_IDENT idx:3->var_ident(arg)
+  [  2] CBC_POST_INCR_PROP_STRING idx:7->string(other)
+  [  0] CBC_CONTEXT_END
+  [  0] CBC_ASSIGN_IDENT_LITERAL idx:9->var_ident(other) idx:4->var_ident(val)
+
+Final byte code dump:
+
+  Maximum stack depth: 15
+  Literal encoding: small
+  Argument range end: 5
+  Register range end: 6
+  Identifier range end: 9
+  Const literal range end: 11
+  Literal range end: 11
+
+   0 : CBC_DEFINE_VARS idx:7(ident)->var_ident(ident)
+   2 : CBC_INITIALIZE_VAR idx:8(ident)->var_ident(arg) idx:3(arg)->undefined
+   5 : CBC_PUSH_IDENT idx:4(arg)->var_ident(val)
+   7 : CBC_EXT_WITH_CREATE_CONTEXT offset:32(->39)
+  10 : CBC_ASSIGN_IDENT_LITERAL idx:6(ident)->var_ident(v1) idx:8(ident)->var_ident(arg)
+  13 : CBC_EXT_TRY_CREATE_CONTEXT offset:17(->30)
+  16 : CBC_PUSH_IDENT idx:7(ident)->var_ident(ident)
+  18 : CBC_EXT_WITH_CREATE_CONTEXT offset:12(->30)
+  21 : CBC_PUSH_IDENT idx:8(ident)->var_ident(arg)
+  23 : CBC_PUSH_IDENT idx:6(ident)->var_ident(v1)
+  25 : CBC_PROP_STRING_GET idx:10(lit)->string(val)
+  27 : CBC_ASSIGN_PROP_STRING idx:9(lit)->string(other)
+  29 : CBC_CONTEXT_END
+  30 : CBC_EXT_FINALLY offset:4(->34)
+  33 : CBC_CONTEXT_END
+  34 : CBC_PUSH_IDENT idx:8(ident)->var_ident(arg)
+  36 : CBC_POST_INCR_PROP_STRING idx:9(lit)->string(other)
+  38 : CBC_CONTEXT_END
+  39 : CBC_ASSIGN_IDENT_LITERAL idx:5(reg)->var_ident(other) idx:4(arg)->var_ident(val)
+  42 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 43 bytes
+
+--- Function parsing end ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 0
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 1
+  Const literal range end: 1
+  Literal range end: 2
+
+   0 : CBC_INITIALIZE_VAR idx:0(ident)->var_ident(func) idx:1(lit)->function
+   3 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 4 bytes
+
+Script parsing successfully completed. Total byte code size: 47 bytes
+
+--- Script parsing end ---
+

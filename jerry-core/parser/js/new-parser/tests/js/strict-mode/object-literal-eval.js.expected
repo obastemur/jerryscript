@@ -1,0 +1,39 @@
+
+--- Script parsing start ---
+
+  Note: switch to strict mode
+
+  [  1] CBC_CREATE_OBJECT
+
+--- Function parsing start ---
+
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Literal encoding: small
+  Argument range end: 1
+  Register range end: 1
+  Identifier range end: 1
+  Const literal range end: 1
+  Literal range end: 1
+
+   0 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 1 bytes
+
+--- Function parsing end ---
+
+  [  2] CBC_PUSH_LITERAL idx:1->function
+  [  1] CBC_EXT_SET_SETTER idx:0->string(eval)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_CREATE_OBJECT
+
+--- Function parsing start ---
+
+  Note: legacy (non-strict) argument definition
+
+
+--- Script parsing end ---
+
+Parse error 'Non strict argument definition.' at line: 8 col: 19

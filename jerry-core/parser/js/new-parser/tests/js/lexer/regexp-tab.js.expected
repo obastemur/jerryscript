@@ -1,0 +1,9 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_ADD_TWO_LITERALS idx:0->regexp(/a/igm) idx:1->regexp(/	/)
+  [  0] CBC_POP_BLOCK
+
+--- Script parsing end ---
+
+Parse error 'Expected ';' token.' at line: 3 col: 19

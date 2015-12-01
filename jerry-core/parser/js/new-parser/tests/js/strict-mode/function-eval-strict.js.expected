@@ -1,0 +1,64 @@
+
+--- Script parsing start ---
+
+
+--- Function parsing start ---
+
+  Note: legacy (non-strict) argument definition
+
+  [  1] CBC_PUSH_LITERAL idx:1->number(1)
+  [  0] CBC_RETURN
+
+Final byte code dump:
+
+  Maximum stack depth: 2
+  Literal encoding: small
+  Argument range end: 1
+  Register range end: 1
+  Identifier range end: 1
+  Const literal range end: 2
+  Literal range end: 2
+
+   0 : CBC_PUSH_LITERAL idx:1(lit)->number(1)
+   2 : CBC_RETURN
+
+Byte code size: 3 bytes
+
+--- Function parsing end ---
+
+
+--- Function parsing start ---
+
+  Note: legacy (non-strict) argument definition
+
+  [  1] CBC_PUSH_LITERAL idx:1->number(2)
+  [  0] CBC_RETURN
+
+Final byte code dump:
+
+  Maximum stack depth: 2
+  Literal encoding: small
+  Argument range end: 1
+  Register range end: 1
+  Identifier range end: 1
+  Const literal range end: 2
+  Literal range end: 2
+
+   0 : CBC_PUSH_LITERAL idx:1(lit)->number(2)
+   2 : CBC_RETURN
+
+Byte code size: 3 bytes
+
+--- Function parsing end ---
+
+
+--- Function parsing start ---
+
+  Note: legacy (non-strict) argument definition
+
+  Note: switch to strict mode
+
+
+--- Script parsing end ---
+
+Parse error 'Non strict argument definition.' at line: 7 col: 37

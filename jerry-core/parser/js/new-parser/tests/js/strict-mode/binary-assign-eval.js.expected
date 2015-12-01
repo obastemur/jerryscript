@@ -1,0 +1,9 @@
+
+--- Script parsing start ---
+
+  Note: switch to strict mode
+
+
+--- Script parsing end ---
+
+Parse error 'Eval cannot assigned in strict mode.' at line: 5 col: 6

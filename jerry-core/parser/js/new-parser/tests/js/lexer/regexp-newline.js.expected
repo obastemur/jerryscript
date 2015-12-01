@@ -1,0 +1,9 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_LITERAL idx:0->regexp(/[\]/]\//)
+  [  0] CBC_POP_BLOCK
+
+--- Script parsing end ---
+
+Parse error 'Newline is not allowed in strings or regexps.' at line: 3 col: 12

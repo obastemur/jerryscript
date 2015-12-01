@@ -1,0 +1,42 @@
+
+--- Script parsing start ---
+
+  [  1] CBC_PUSH_IDENT idx:0->ident(next_statement)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:1->string(string literal in quotation mark with semicolon)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:2->string(string literal in quotation mark without semicolon)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:3->string(string literal in aphostrophe with semicolon)
+  [  0] CBC_POP_BLOCK
+  [  1] CBC_PUSH_LITERAL idx:4->string(string literal in aphostrophe without semicolon)
+  [  0] CBC_POP_BLOCK
+
+Final byte code dump:
+
+  Maximum stack depth: 1
+  Literal encoding: small
+  Argument range end: 0
+  Register range end: 0
+  Identifier range end: 1
+  Const literal range end: 5
+  Literal range end: 5
+
+   0 : CBC_PUSH_IDENT idx:0(ident)->ident(next_statement)
+   2 : CBC_POP_BLOCK
+   3 : CBC_PUSH_LITERAL idx:1(lit)->string(string literal in quotation mark with semicolon)
+   5 : CBC_POP_BLOCK
+   6 : CBC_PUSH_LITERAL idx:2(lit)->string(string literal in quotation mark without semicolon)
+   8 : CBC_POP_BLOCK
+   9 : CBC_PUSH_LITERAL idx:3(lit)->string(string literal in aphostrophe with semicolon)
+  11 : CBC_POP_BLOCK
+  12 : CBC_PUSH_LITERAL idx:4(lit)->string(string literal in aphostrophe without semicolon)
+  14 : CBC_POP_BLOCK
+  15 : CBC_RETURN_WITH_UNDEFINED
+
+Byte code size: 16 bytes
+
+Script parsing successfully completed. Total byte code size: 16 bytes
+
+--- Script parsing end ---
+

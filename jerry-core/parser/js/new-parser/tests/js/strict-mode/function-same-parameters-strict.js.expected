@@ -1,0 +1,14 @@
+
+--- Script parsing start ---
+
+
+--- Function parsing start ---
+
+  Note: legacy (non-strict) argument definition
+
+  Note: switch to strict mode
+
+
+--- Script parsing end ---
+
+Parse error 'Non strict argument definition.' at line: 7 col: 1
